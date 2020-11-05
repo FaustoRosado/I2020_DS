@@ -2,12 +2,12 @@ import sys
 
 def html_output(func):
     def wrapper(args):
-        out = open('output.html', 'w') 
-        out.write("<body>")
-        out.write("\n")
-        out.write(func(args)
-        out.write("</body>")
-        #out.close()
+        with open('output.html', 'w') as output: 
+        output.write("<body>")
+        output.write("\n")
+        output.write(func(args)
+        output.write("\n</body>")
+       
     return wrapper
 
 @html_output
