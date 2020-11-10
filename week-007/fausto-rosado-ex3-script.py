@@ -1,21 +1,20 @@
 import sys
 
-def html_output(func):
-    def wrapper(args):
-        with open('output.html', 'w') as output: 
-        output.write("<body>")
-        output.write("\n")
-        output.write(func(args)
-        output.write("\n</body>")
-       
-    return wrapper
-
-@html_output
 def html_func(args):
-    return args
+   
+    with open('output.html', 'w') as filename:
+        filename.write(f"<body>\n")
+        for arg in args:
+            filename.write(arg)
+            filename.write(" ")
+        filename.write(f"\n<\body>")
+           
+    #return args
+
     
 if __name__ == "__main__":
     args = sys.argv[1:]
     html_func(args)
+    
     
     

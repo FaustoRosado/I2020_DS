@@ -1,14 +1,12 @@
+import sys
 
 def html_output(func):
-    def wrapper(*args):
-        
-        output = open("outfile.txt", "w") 
-
-        output.write("<body>")
-        outfile.write("\n")
-        outfile.write(func(args "$@"))
-        outfile.write("</body>")
-        outfile.close()
+    def wrapper(args):
+        with open('output.html', w) as filename:
+            filename.write("<body>")
+            filename.write(func(args))
+            filename.write("<\body>")
+           
     return wrapper
 
 @html_output
