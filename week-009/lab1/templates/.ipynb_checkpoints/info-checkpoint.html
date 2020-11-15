@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}info page{% endblock %}
+
+{% block header %}
+
+<p>request:</p>
+<p>{{ req }}</p>
+
+<p>request.url:</p>
+<p>{{ req.url }}</p>
+
+<p>request.user_agent:</p>
+<p>{{ req.user_agent }}</p>
+
+<p>request.method:</p>
+<p>{{ req.method }}</p>
+
+<p>request.args:</p>
+<p>{{ request.args }}</p>
+
+<p>request.data:</p>
+<p>{{ req.data }}</p>
+
+<p>request.headers:</p>
+<p>{{ req.headers }}</p>
+
+<p>request.cookies:</p>
+<p>{{ req.cookies }}</p>
+
+<p>request.form:</p>
+<p>{{ req.form }}</p>
+
+<p>request.referrer:</p>
+<p>{{ request.referrer }}</p>
+
+{% endblock %}
+
