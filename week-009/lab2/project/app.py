@@ -5,22 +5,21 @@ from flask import Flask, render_template, url_for, request, json
 app = Flask(__name__)
 
 
+url = 'https://www.coalitionforthehomeless.org/basic-facts-about-\
+       homelessness-new-york-city-data-and-charts/'
 
+
+response = requests.get("https://www.coalitionforthehomeless.org/basic-facts-about-\
+       homelessness-new-york-city-data-and-charts/")
+
+soup = BeautifulSoup(response.content, 'html.parser')
 
 
 @app.route('/')
 #@app.route('/index/')
 def home():
-
-    url = 'https://www.coalitionforthehomeless.org/basic-facts-about-\
-       homelessness-new-york-city-data-and-charts/'
-
-
-    req = requests.get(url)
-
-    
-    
-    return render_template('index.html', req=req)
+    soup.prettify()
+    return render_template('index.html')
 
 
 
