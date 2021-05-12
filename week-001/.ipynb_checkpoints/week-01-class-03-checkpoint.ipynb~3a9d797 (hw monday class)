@@ -1,0 +1,3166 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<div style=\"background: #000;\n",
+    "            color: #FFF;\n",
+    "            margin: 0px;\n",
+    "                padding: 10px 0px 20px 0px;\n",
+    "            text-align: center; \n",
+    "                \">\n",
+    "    <h1>Python Data Science Course - Week 1 - Day 3</h1>\n",
+    "</div>\n",
+    "\n",
+    "## Todays Agenda\n",
+    "* Logic Fun\n",
+    "* Ints vs. Floats\n",
+    "* Math in Python\n",
+    "* Discuss homework assignments\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Logic Fun\n",
+    "\n",
+    "### Truth Tables\n",
+    "\n",
+    "\tTrue\t      False\t\tIdentity   \tNegation\n",
+    "\tp\tT\t\tp\tF\t\tp\tp\t\tp   ¬P\n",
+    "\tT\tT\t\tT\tF\t\tT\tT\t\tT\tF\n",
+    "\tF\tT\t\tF\tF\t\tF\tF\t\tF\tT\n",
+    "\n",
+    "\tAND      OR       XOR     NAND\n",
+    "\tp & q\tp || q   p ⊕ q   p  NAND  q\n",
+    "\tT T T\tT T  T   T F T   T    F   T\n",
+    "\tT F F\tT T  F   T T F   T    T   F\n",
+    "\tF F T\tF T  T   F T T   F    T   T\n",
+    "\tF F F\tF F  F   F F F   F    T   F\n",
+    "\t\n",
+    "\n",
+    "Can You Answer these? How about in python?      \n",
+    "\n",
+    "¬ (p  &  q )    \n",
+    "F  T  T  T\n",
+    "T  T  F  F\n",
+    "T  F  F  T\n",
+    "T  F  F  F\n",
+    "\n",
+    "\n",
+    "( p  ||  q ) & ( ¬p   || ¬q)\n",
+    "  T  T   T   F    F   F   F\n",
+    "  T  T   F   T    F   T   T\n",
+    "  F  T   T   T    T   T   F\n",
+    "  F  F   F   F    T   T   F"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# DIscuss python solutions for logic fun"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 5,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "p = True\n",
+    "q = False\n",
+    "\n",
+    "not (p and q)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "False"
+      ]
+     },
+     "execution_count": 4,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "(p or q) and (not p or not q)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Notes from yesterday"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 34,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "enter an adjectivedw\n",
+      "enter and adjectiveff\\f\n",
+      "enter a nounff\n",
+      "enter a verbf\n",
+      "enter a noun\n",
+      "enter a nounf\n",
+      "enter a dayf\n",
+      "enter a personf\n",
+      "enter a verbf\n",
+      "enter a weather\n",
+      "enter a crazy event\n",
+      "enter an actionf\n",
+      "enter a numberf\n",
+      "enter a time of arrivalf\n",
+      "enter a actionf\n",
+      "enter a conditionf\n",
+      "enter a meeting eventf\n",
+      "It was a dw, cold November day. I woke up to the ff\\f smell of ff downstairs. I quickly got ready, grabbing my  and ran downstairs to f the f. It was f and I was late! I rushed outside to see f at the bodega f. I had no time for that and it was  outside so I headed to the subway. On the train, I see  so I f. I finally get to my stop and leave the train. I'm f minutes f so I f. I get to the meeting f only to find out that f\n"
+     ]
+    }
+   ],
+   "source": [
+    "first_adjective = input(\"enter an adjective\")\n",
+    "second_adjective = input(\"enter and adjective\")\n",
+    "first_noun = input(\"enter a noun\")\n",
+    "first_verb = input(\"enter a verb\")\n",
+    "second_noun = input(\"enter a noun\")\n",
+    "third_noun = input(\"enter a noun\")\n",
+    "day = input(\"enter a day\")\n",
+    "person = input(\"enter a person\")\n",
+    "second_verb = input(\"enter a verb\")\n",
+    "weather = input(\"enter a weather\")\n",
+    "crazy_event = input(\"enter a crazy event\")\n",
+    "action_in_response = input(\"enter an action\")\n",
+    "number = input(\"enter a number\")\n",
+    "time_of_arrival = input(\"enter a time of arrival\")\n",
+    "action = input(\"enter a action\")\n",
+    "condition = input(\"enter a condition\")\n",
+    "meeting_event = input(\"enter a meeting event\")\n",
+    "\n",
+    "mad_lib = f\"It was a {first_adjective}, cold November day. I woke up to the {second_adjective} smell of {first_noun} downstairs. I quickly got ready, grabbing my {second_noun} and ran downstairs to {first_verb} the {third_noun}. It was {day} and I was late! I rushed outside to see {person} at the bodega {second_verb}. I had no time for that and it was {weather} outside so I headed to the subway. On the train, I see {crazy_event} so I {action_in_response}. I finally get to my stop and leave the train. I'm {number} minutes {time_of_arrival} so I {action}. I get to the meeting {condition} only to find out that {meeting_event}\"\n",
+    "\n",
+    "print(mad_lib)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### bools"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "hello\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(\"hello\") and print(\"hello\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "hello\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(\"hello\") and True"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "hello\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(\"hello\") and False"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "hello\n"
+     ]
+    }
+   ],
+   "source": [
+    "True and print(\"hello\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "False"
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "False and print(\"hello\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "hello\n",
+      "goodbye\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(\"hello\") or print(\"goodbye\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "hello\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 12,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "print(\"hello\") or True"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 13,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "True == 1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 14,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "False == 0"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "False"
+      ]
+     },
+     "execution_count": 22,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "bool(None)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "False"
+      ]
+     },
+     "execution_count": 16,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "False == -323"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(False, False, False)"
+      ]
+     },
+     "execution_count": 17,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "bool(0), bool(0.00), bool(0j)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "False"
+      ]
+     },
+     "execution_count": 18,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "bool(None)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(False, False, False)"
+      ]
+     },
+     "execution_count": 19,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "bool(()), bool([]), bool({})"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "False"
+      ]
+     },
+     "execution_count": 21,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "class Example:                           # STRUCTURE OF CLASS \n",
+    "    def __init__(self):                  # When an object is 0, will have hidden methods\n",
+    "        pass\n",
+    "    def __bool__(self):                  # in python hidden methods, setting up later in the class\n",
+    "        return False                     # to be familiar\n",
+    "    def __len__(self):\n",
+    "        return 0\n",
+    "\n",
+    "e = Example()\n",
+    "    \n",
+    "bool(e)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Ints"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "variable = 45"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "type(variable)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# common math operations"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "variable = 10 + 10\n",
+    "\n",
+    "print(variable)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "variable = 10 - 10\n",
+    "\n",
+    "print(variable)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "variable = -10 + 10\n",
+    "print(variable)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# some useful tricks\n",
+    "\n",
+    "# adding/subtracting an amount to a variable:\n",
+    "variable += 5\n",
+    "variable -= 5"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# multiplication\n",
+    "\n",
+    "variable = 5 * 5\n",
+    "\n",
+    "# using exponents\n",
+    "\n",
+    "variable2 = 5 ** 5\n",
+    "\n",
+    "print(variable, variable2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Examples using python as a calculator"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Say you had a company that ran projects with a budgeted amount of $1000 per project. Of that amount, you spend money for supplies and labor. Often, you don't use the full budget. Your boss asks you weekly to generate a list of the leftover funds. \n",
+    "\n",
+    "Let's use python to create a script that will allow us to enter the values and generate that list easily. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Enter the cost of supplies: 400\n",
+      "Enter the cost of labor: 400\n",
+      "balance equals 1000\n"
+     ]
+    }
+   ],
+   "source": [
+    "budget = 1000\n",
+    "    \n",
+    "cost_of_supplies = int(input(\"Enter the cost of supplies: \"))\n",
+    "cost_of_labor = int(input(\"Enter the cost of labor: \"))\n",
+    "#convert the string to integer \n",
+    "\n",
+    "balance -= budget - (cost_of_supplies + cost_of_labor)\n",
+    "print(\"balance equals\", budget)\n",
+    "#"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "sum(s)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# More complicated examples"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "4"
+      ]
+     },
+     "execution_count": 26,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Floor division\n",
+    "#will return about bigger number goes into smaller cleanly\n",
+    "\n",
+    "14 // 3 # discards fractional part"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "2"
+      ]
+     },
+     "execution_count": 27,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Remainder operation, similar to javascript modulo\n",
+    "\n",
+    "14 % 3 # returns remainder"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "5"
+      ]
+     },
+     "execution_count": 28,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# putting that together:\n",
+    "\n",
+    "w = 17 // 3\n",
+    "w"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 29,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "2"
+      ]
+     },
+     "execution_count": 29,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "x = 17 % 3\n",
+    "x"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 30,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(5, 2)"
+      ]
+     },
+     "execution_count": 30,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "y = w, x    # tuple in python\n",
+    "y"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 31,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "17"
+      ]
+     },
+     "execution_count": 31,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "w * 3 + x"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# multiplication gets tricky"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'int'>\n",
+      "<class 'int'>\n",
+      "<class 'float'>\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(type(5))\n",
+    "print(type(3))\n",
+    "print(type(5/3))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 33,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "float"
+      ]
+     },
+     "execution_count": 33,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "type(4.)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 35,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "3.142857142857143"
+      ]
+     },
+     "execution_count": 35,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "22/7   # "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 36,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(884279719003555, 281474976710656)"
+      ]
+     },
+     "execution_count": 36,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "import math\n",
+    "math.pi.as_integer_ratio()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "884279719003555/281474976710656"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Floats\n",
+    "***\n",
+    "\n",
+    "The float type in CPython uses a C double for storage. A float object’s value is stored in binary floating-point with a fixed precision (typically 53 bits) and Python uses C operations, which in turn rely on the hardware implementation in the processor, to perform floating-point operations. This means that as far as floating-point operations are concerned, Python behaves like many popular languages including C and Java.\n",
+    "\n",
+    "Floats:\n",
+    "1. Sign bit\n",
+    "2. Fractional part digits\n",
+    "3. Exponent part digits\n",
+    "\n",
+    "\n",
+    "\n",
+    "1. bit for negative/postive\n",
+    "2. bits to expand as follows:  \n",
+    "$\n",
+    "01101101 - 0*2^{-1} + 1*2^{-2} + 1*2^{-3} + 0*2^{-4} + 1*2^{-5} + 1*2^{-6} + 0*2^{-7} + 1*2^{-8} = 0.42578125\n",
+    "$\n",
+    "3. bits for exponent:\n",
+    "$\n",
+    "11000011 - 1*2^7 + 1*2^6 + 0*2^5 + 0*2^4 + 0*2^3 + 0*2^2 + 1*2^1 + 1*2^0 = 195\n",
+    "$\n",
+    "\n",
+    "\n",
+    "sign * fractional part ** exponent\n",
+    "\n",
+    "Can describe any number in the number system\n",
+    "\n",
+    "the reason why we need floating points:\n",
+    "real and imaginary numbers \n",
+    "integers are whole numbers \n",
+    "real numbers starting from 0"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 37,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "0.42578125"
+      ]
+     },
+     "execution_count": 37,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "0*2**-1 + 1*2**-2 + 1*2**-3 + 0*2**-4 + 1*2**-5 + 1*2**-6 + 0*2**-7 + 1*2**-8"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "sum([int(j) * 2 **-(i+1) for i, j in enumerate('01101101')])    # way more readable"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "1*2**7 + 1*2**6 + 0*2**5 + 0*2**4 + 0*2**3 + 0*2**2 + 1*2**1 + 1*2**0"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "sum([int(j) * 2 **(i) for i, j in enumerate('11000011')])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "1 2 3 4 5 6 7 8 9 10     only 8 between \n",
+    "\n",
+    "1.00 1.01 1.02 .. 1.99 2.00     99 of them between 1 & 2\n",
+    "\n",
+    "1.00000000000000000000000000000...    infinite numbers, reason we use floats and infinite #\n",
+    "\n",
+    "computer trying to complete\n",
+    "\n",
+    "2.000000000000000000000000000000000000000000000...\n",
+    "1.0 ... 2.0"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 38,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "0.3333333333333333"
+      ]
+     },
+     "execution_count": 38,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "1/3.      # wind up having tiny error compounded over time left out a little bit of the math"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 39,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "float"
+      ]
+     },
+     "execution_count": 39,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "import math  # math library\n",
+    "\n",
+    "type(math.pi)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 46,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'3.14159265359'"
+      ]
+     },
+     "execution_count": 46,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "format(math.pi, '.12f')    # use f means float"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 41,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'3.14'"
+      ]
+     },
+     "execution_count": 41,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "format(math.pi, '.2f')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 42,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'0.10000000000000001'"
+      ]
+     },
+     "execution_count": 42,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "format(0.1, '.17f')     # issue with floating point numbers"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 44,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "0.30000000000000004"
+      ]
+     },
+     "execution_count": 44,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "0.1 + 0.1 + 0.1 == 0.3      # why --> tiny litte error going off track, being aware of issues\n",
+    "#0.1 + 0.1 + 0.1 ---> 0.30000000000000004"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "round(0.1 + 0.1 + 0.1, 10) == round(0.3, 10)  # ways to get around, argument 10 "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(3602879701896397, 36028797018963968)"
+      ]
+     },
+     "execution_count": 1,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "(0.1).as_integer_ratio()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from decimal import getcontext, Decimal      # Decimal libraries, later on in the course.\n",
+    "getcontext().prec = 6\n",
+    "Decimal(1)/Decimal(7)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "getcontext().prec = 28\n",
+    "Decimal(1)/Decimal(7)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "getcontext().prec = 2\n",
+    "Decimal(1)/Decimal(7)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from fractions import Fraction\n",
+    "Fraction.from_float(0.25)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "Fraction.from_float(0.33333)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# More Python\n",
+    "\n",
+    "## Useful Built In Functions\n",
+    "\n",
+    "|               |             |              |              |                |\n",
+    "|---------------|-------------|--------------|--------------|----------------|\n",
+    "| abs()         | delattr()   | hash()       | memoryview() | set()          |\n",
+    "| all()         | dict()      | help()       | min()        | setattr()      |\n",
+    "| any()         | dir()       | hex()        | next()       | slice()        |\n",
+    "| ascii()       | divmod()    | id()         | object()     | sorted()       |\n",
+    "| bin()         | enumerate() | input()      | oct()        | staticmethod() |\n",
+    "| bool()        | eval()      | int()        | open()       | str()          |\n",
+    "| breakpoint()  | exec()      | isinstance() | ord()        | sum()          |\n",
+    "| bytearray()   | filter()    | issubclass() | pow()        | super()        |\n",
+    "| bytes()       | float()     | iter()       | print()      | tuple()        |\n",
+    "| callable()    | format()    | len()        | property()   | type()         |\n",
+    "| chr()         | frozenset() | list()       | range()      | vars()         |\n",
+    "| classmethod() | getattr()   | locals()     | repr()       | zip()          |\n",
+    "| compile()     | globals()   | map()        | reversed()   | \\__import__()   |\n",
+    "| complex()     | hasattr()   | max()        | round()      |                |"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### `abs(x)` -> returns absolute value of x   \n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 47,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "10"
+      ]
+     },
+     "execution_count": 47,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "abs(10)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 48,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "10"
+      ]
+     },
+     "execution_count": 48,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "abs(-10)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 49,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "0"
+      ]
+     },
+     "execution_count": 49,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "abs(0)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### `bool(x)` -> casts x as bool "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 51,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(False, True, False)"
+      ]
+     },
+     "execution_count": 51,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "bool(0), bool(\" \"), bool(None) # space bet string makes true"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "bool(1), bool(24)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "bool(True), bool(4), bool(\"s\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### `callable(x)` -> returns True if x is a function  \n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 52,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 52,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "callable(print)  # if method or function"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 53,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 53,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "callable(bool)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 54,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "False"
+      ]
+     },
+     "execution_count": 54,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "s = \"string\"\n",
+    "callable(s)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### `dict()` -> returns dict  "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 55,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "dict"
+      ]
+     },
+     "execution_count": 55,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "d = dict()\n",
+    "d = {}        # will be difference between the two\n",
+    "type(d)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### `dir(x)` -> returns attributes and methods of object x  "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 56,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "['Example',\n",
+       " 'In',\n",
+       " 'Out',\n",
+       " '_',\n",
+       " '_1',\n",
+       " '_10',\n",
+       " '_12',\n",
+       " '_13',\n",
+       " '_14',\n",
+       " '_15',\n",
+       " '_16',\n",
+       " '_17',\n",
+       " '_18',\n",
+       " '_19',\n",
+       " '_2',\n",
+       " '_20',\n",
+       " '_21',\n",
+       " '_22',\n",
+       " '_23',\n",
+       " '_26',\n",
+       " '_27',\n",
+       " '_28',\n",
+       " '_29',\n",
+       " '_3',\n",
+       " '_30',\n",
+       " '_31',\n",
+       " '_33',\n",
+       " '_34',\n",
+       " '_35',\n",
+       " '_36',\n",
+       " '_37',\n",
+       " '_38',\n",
+       " '_39',\n",
+       " '_4',\n",
+       " '_40',\n",
+       " '_41',\n",
+       " '_42',\n",
+       " '_43',\n",
+       " '_44',\n",
+       " '_46',\n",
+       " '_47',\n",
+       " '_48',\n",
+       " '_49',\n",
+       " '_5',\n",
+       " '_50',\n",
+       " '_51',\n",
+       " '_52',\n",
+       " '_53',\n",
+       " '_54',\n",
+       " '_55',\n",
+       " '__',\n",
+       " '___',\n",
+       " '__builtin__',\n",
+       " '__builtins__',\n",
+       " '__doc__',\n",
+       " '__loader__',\n",
+       " '__name__',\n",
+       " '__package__',\n",
+       " '__spec__',\n",
+       " '_dh',\n",
+       " '_i',\n",
+       " '_i1',\n",
+       " '_i10',\n",
+       " '_i11',\n",
+       " '_i12',\n",
+       " '_i13',\n",
+       " '_i14',\n",
+       " '_i15',\n",
+       " '_i16',\n",
+       " '_i17',\n",
+       " '_i18',\n",
+       " '_i19',\n",
+       " '_i2',\n",
+       " '_i20',\n",
+       " '_i21',\n",
+       " '_i22',\n",
+       " '_i23',\n",
+       " '_i24',\n",
+       " '_i25',\n",
+       " '_i26',\n",
+       " '_i27',\n",
+       " '_i28',\n",
+       " '_i29',\n",
+       " '_i3',\n",
+       " '_i30',\n",
+       " '_i31',\n",
+       " '_i32',\n",
+       " '_i33',\n",
+       " '_i34',\n",
+       " '_i35',\n",
+       " '_i36',\n",
+       " '_i37',\n",
+       " '_i38',\n",
+       " '_i39',\n",
+       " '_i4',\n",
+       " '_i40',\n",
+       " '_i41',\n",
+       " '_i42',\n",
+       " '_i43',\n",
+       " '_i44',\n",
+       " '_i45',\n",
+       " '_i46',\n",
+       " '_i47',\n",
+       " '_i48',\n",
+       " '_i49',\n",
+       " '_i5',\n",
+       " '_i50',\n",
+       " '_i51',\n",
+       " '_i52',\n",
+       " '_i53',\n",
+       " '_i54',\n",
+       " '_i55',\n",
+       " '_i56',\n",
+       " '_i6',\n",
+       " '_i7',\n",
+       " '_i8',\n",
+       " '_i9',\n",
+       " '_ih',\n",
+       " '_ii',\n",
+       " '_iii',\n",
+       " '_oh',\n",
+       " 'balance',\n",
+       " 'budget',\n",
+       " 'cost_of_labor',\n",
+       " 'cost_of_supplies',\n",
+       " 'd',\n",
+       " 'e',\n",
+       " 'exit',\n",
+       " 'get_ipython',\n",
+       " 'math',\n",
+       " 'p',\n",
+       " 'q',\n",
+       " 'quit',\n",
+       " 's',\n",
+       " 'w',\n",
+       " 'x',\n",
+       " 'y']"
+      ]
+     },
+     "execution_count": 56,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "dir()  # ran without argument, attributes to the interpreter"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 57,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "['__call__',\n",
+       " '__class__',\n",
+       " '__delattr__',\n",
+       " '__dict__',\n",
+       " '__dir__',\n",
+       " '__doc__',\n",
+       " '__eq__',\n",
+       " '__format__',\n",
+       " '__ge__',\n",
+       " '__getattribute__',\n",
+       " '__gt__',\n",
+       " '__hash__',\n",
+       " '__init__',\n",
+       " '__init_subclass__',\n",
+       " '__le__',\n",
+       " '__lt__',\n",
+       " '__module__',\n",
+       " '__ne__',\n",
+       " '__new__',\n",
+       " '__reduce__',\n",
+       " '__reduce_ex__',\n",
+       " '__repr__',\n",
+       " '__setattr__',\n",
+       " '__sizeof__',\n",
+       " '__str__',\n",
+       " '__subclasshook__',\n",
+       " '__weakref__']"
+      ]
+     },
+     "execution_count": 57,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "dir(help)    # information on objects, attributes and methods avaialble"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    " ### `float(x)` -> casts x to a float  "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 58,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "1.0"
+      ]
+     },
+     "execution_count": 58,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "float(1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 59,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "1.0"
+      ]
+     },
+     "execution_count": 59,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "float(\"1\")  # just convert to float, number within string will work"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 60,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "ValueError",
+     "evalue": "could not convert string to float: 's'",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mValueError\u001b[0m                                Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-60-817e6ea32519>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mfloat\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"s\"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[0;31mValueError\u001b[0m: could not convert string to float: 's'"
+     ]
+    }
+   ],
+   "source": [
+    "float(\"s\")   # only works if number or float w/i string"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "\n",
+    "### `hex(x)` -> casts int x as a hex   \n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 61,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'0x0'"
+      ]
+     },
+     "execution_count": 61,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "hex(0)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 62,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "TypeError",
+     "evalue": "'float' object cannot be interpreted as an integer",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mTypeError\u001b[0m                                 Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-62-527c8167b553>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mhex\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;36m0.0\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[0;31mTypeError\u001b[0m: 'float' object cannot be interpreted as an integer"
+     ]
+    }
+   ],
+   "source": [
+    "hex(0.0)    # float can have any number after decimal ERROR"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 63,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "TypeError",
+     "evalue": "'str' object cannot be interpreted as an integer",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mTypeError\u001b[0m                                 Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-63-0b00495ca65c>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mhex\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"0\"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[0;31mTypeError\u001b[0m: 'str' object cannot be interpreted as an integer"
+     ]
+    }
+   ],
+   "source": [
+    "hex(\"0\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### `id(x)` -> returns id for object x  \n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 64,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "strin\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "(4404673904, 4404673904, 4465957872, 4465957872, 4468442096, 4468442288)"
+      ]
+     },
+     "execution_count": 64,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "s = \"string\"   # s & d have same id, IMMUTABLE cannot change a string S & D referring to same obj\n",
+    "d = \"string\"\n",
+    "e = \"strin\"\n",
+    "f = e[:]\n",
+    "g = s[:-1] # when we create g, set to entirety of s except for the last one\n",
+    "h = d[:-1]\n",
+    "print(f)\n",
+    "id(s), id(d), id(e), id(f), id(g), id(h)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 65,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 65,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "s is d   # s and d refer to same memory space"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 66,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 66,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "s == d"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 67,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 67,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "e == g  # checking for the same object"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 68,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "False"
+      ]
+     },
+     "execution_count": 68,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "e is g  # referring to 2 different memory addresses"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 69,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(4465227904, 4465475072)"
+      ]
+     },
+     "execution_count": 69,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "s = [4, 5]   # list are immutable  \n",
+    "d = [4, 5]   # 2 different objects in memory\n",
+    "id(s), id(d)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 70,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "False"
+      ]
+     },
+     "execution_count": 70,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "s is d    # same thing, not CONTENTS are the same "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 71,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 71,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "s == d   # contents are the same "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### `input()`  -> returns user input"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 72,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "hello\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "'hello'"
+      ]
+     },
+     "execution_count": 72,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "input()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 73,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "hello\n"
+     ]
+    }
+   ],
+   "source": [
+    "s = input()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 76,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'hello'"
+      ]
+     },
+     "execution_count": 76,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "s"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### `int(x)` -> casts x as int  "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 75,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "0"
+      ]
+     },
+     "execution_count": 75,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "int(0)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 78,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "ValueError",
+     "evalue": "invalid literal for int() with base 10: '1.323'",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mValueError\u001b[0m                                Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-78-99135f9559d2>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"1.323\"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[0;31mValueError\u001b[0m: invalid literal for int() with base 10: '1.323'"
+     ]
+    }
+   ],
+   "source": [
+    "int(\"1.323\")   # error"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 79,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "1"
+      ]
+     },
+     "execution_count": 79,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "int(True)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### `len(x)` -> returns count of x  "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 80,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "6"
+      ]
+     },
+     "execution_count": 80,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "len(\"string\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 81,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "4"
+      ]
+     },
+     "execution_count": 81,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "len([1,2,3,4])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 82,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "4"
+      ]
+     },
+     "execution_count": 82,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "len((1,2,3,4))  # tuple"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 83,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "2"
+      ]
+     },
+     "execution_count": 83,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "len({'a':1, 'b':2})"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### `list()`  -> returns list"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 84,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "l = list()   # useful beyond to create list, for different type of iterable"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 85,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "l.append(4)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 86,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[4]"
+      ]
+     },
+     "execution_count": 86,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "l"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### `pow(x, y)` -> returns x to the y power  "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 87,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "16"
+      ]
+     },
+     "execution_count": 87,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pow(2,4)  #same as 2**4"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 88,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "625"
+      ]
+     },
+     "execution_count": 88,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pow(25,2)   # functional way of doing"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### `print()`  -> prints argument"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 89,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "hello\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(\"hello\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 90,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "25\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(25)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 91,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "True\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(True)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### `range()`  returns iterable of sequential values"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 92,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "range(0, 100)"
+      ]
+     },
+     "execution_count": 92,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "range(100)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 93,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "range(5, 10)"
+      ]
+     },
+     "execution_count": 93,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "range(5,10)   # list(range(5,10))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 96,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]"
+      ]
+     },
+     "execution_count": 96,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "[i for i in range(10)]  # not including 10   len(list(range(100)))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### `round(x)` -> returns x rounded to nearest"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 100,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "0.0"
+      ]
+     },
+     "execution_count": 100,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "round(132320.0324534521, -9)  # can round before the decimal"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### `set()` "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "s = set()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 101,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "AttributeError",
+     "evalue": "'str' object has no attribute 'add'",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mAttributeError\u001b[0m                            Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-101-eae5cc6fb716>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0ms\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0madd\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;36m4\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[0;31mAttributeError\u001b[0m: 'str' object has no attribute 'add'"
+     ]
+    }
+   ],
+   "source": [
+    "s.add(4)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 102,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'hello'"
+      ]
+     },
+     "execution_count": 102,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "s"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### `str(x)`  -> casts x as string"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 103,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'718'"
+      ]
+     },
+     "execution_count": 103,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "str(718)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 104,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'True'"
+      ]
+     },
+     "execution_count": 104,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "str(True)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 105,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'[2, 3, 4, 5]'"
+      ]
+     },
+     "execution_count": 105,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "str([2,3,4,5])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 106,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "NameError",
+     "evalue": "name 't' is not defined",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-106-34fc7a11cb38>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mt\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[0;31mNameError\u001b[0m: name 't' is not defined"
+     ]
+    }
+   ],
+   "source": [
+    "t"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### `type()`  "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 107,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "str"
+      ]
+     },
+     "execution_count": 107,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "type(\"string\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Dunder methods"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 108,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "['__add__',\n",
+       " '__class__',\n",
+       " '__contains__',\n",
+       " '__delattr__',\n",
+       " '__dir__',\n",
+       " '__doc__',\n",
+       " '__eq__',\n",
+       " '__format__',\n",
+       " '__ge__',\n",
+       " '__getattribute__',\n",
+       " '__getitem__',\n",
+       " '__getnewargs__',\n",
+       " '__gt__',\n",
+       " '__hash__',\n",
+       " '__init__',\n",
+       " '__init_subclass__',\n",
+       " '__iter__',\n",
+       " '__le__',\n",
+       " '__len__',\n",
+       " '__lt__',\n",
+       " '__mod__',\n",
+       " '__mul__',\n",
+       " '__ne__',\n",
+       " '__new__',\n",
+       " '__reduce__',\n",
+       " '__reduce_ex__',\n",
+       " '__repr__',\n",
+       " '__rmod__',\n",
+       " '__rmul__',\n",
+       " '__setattr__',\n",
+       " '__sizeof__',\n",
+       " '__str__',\n",
+       " '__subclasshook__']"
+      ]
+     },
+     "execution_count": 108,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "s = str()\n",
+    "[i for i in dir(s) if i.endswith('_')]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 109,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "str(object='') -> str\n",
+      "str(bytes_or_buffer[, encoding[, errors]]) -> str\n",
+      "\n",
+      "Create a new string object from the given object. If encoding or\n",
+      "errors is specified, then the object must expose a data buffer\n",
+      "that will be decoded using the given encoding and error handler.\n",
+      "Otherwise, returns the result of object.__str__() (if defined)\n",
+      "or repr(object).\n",
+      "encoding defaults to sys.getdefaultencoding().\n",
+      "errors defaults to 'strict'.\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(s.__doc__)   # strign that explains, useful for any methods run s.__doc__ after variable"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 110,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<method-wrapper '__str__' of str object at 0x1067222f0>\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(s.__str__)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 111,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<method-wrapper '__repr__' of str object at 0x1067222f0>\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(s.__repr__)   # create own dunder method to print out, dealing with this"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 112,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<method-wrapper '__len__' of str object at 0x1067222f0>\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(s.__len__)  # len(s)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 113,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'str'>\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(s.__class__)   # useful dealing with object dont know"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 114,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<built-in method __dir__ of str object at 0x1067222f0>\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(s.__dir__)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 115,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<method-wrapper '__init__' of str object at 0x1067222f0>\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(s.__init__)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 117,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "bool(x) -> bool\n",
+      "\n",
+      "Returns True when the argument x is true, False otherwise.\n",
+      "The builtins True and False are the only two instances of the class bool.\n",
+      "The class bool is a subclass of the class int, and cannot be subclassed.\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(bool.__doc__)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Built In Exceptions"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 118,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "IndexError",
+     "evalue": "string index out of range",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mIndexError\u001b[0m                                Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-118-df46f1f6dc9f>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0;34m\"123\"\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;36m9\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[0;31mIndexError\u001b[0m: string index out of range"
+     ]
+    }
+   ],
+   "source": [
+    "\"123\"[9]   # index out of range,   traceback error, program stop running"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 119,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "string index out of range\n"
+     ]
+    }
+   ],
+   "source": [
+    "try:      # may be familiar, print out error method, to print out custom error\n",
+    "    \"123\"[9]    # catch the error so it continues to run\n",
+    "except Exception as e:   # basically aliasing it  ie import flask as f  - aliased it \n",
+    "    print(e)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 120,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "Exception",
+     "evalue": "",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mException\u001b[0m                                 Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-120-5d8b7b550261>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0;32mraise\u001b[0m \u001b[0mException\u001b[0m   \u001b[0;31m# type in python\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[0;31mException\u001b[0m: "
+     ]
+    }
+   ],
+   "source": [
+    "raise Exception   # type in python"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 121,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "type"
+      ]
+     },
+     "execution_count": 121,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "type(Exception)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Python Documentation"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "help()  # in any intrepter and in jupyter notebook"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<div style=\"background: #000;\n",
+    "            color: #FFF;\n",
+    "            margin: 0px;\n",
+    "                padding: 10px 0px 20px 0px;\n",
+    "            text-align: center; \n",
+    "                \">\n",
+    "    <h1>Extended Lab</h1>\n",
+    "</div>\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Question 1: \n",
+    "\n",
+    "Explain what data types are in your own words."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Data types are basically representations of data. In python, some examples are integers, strings, boolean, etc. It is the type of data that lets the computer and compiler know what type of data is being represented. "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Question 2:\n",
+    "\n",
+    "In your own words, explain what a float is and why sometimes it gives an incorrect value."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "A float is basically a decimal number, and the reason gives an incorrect value sometimes, is because there can be an infinite amount of numbers or precision after the decimal point. Since that precision can't be printed or represented sometimes, small errors can lead to bigger ones."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercise 1:\n",
+    "\n",
+    "Store your first name, in lowercase, in a variable.\n",
+    "Using that one variable, print your name in lowercase, Titlecase, and UPPERCASE.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "What is your first name?Fausto\n",
+      "fausto\n",
+      "Fausto\n",
+      "FAUSTO\n"
+     ]
+    }
+   ],
+   "source": [
+    "first_name = input(\"What is your first name?\")\n",
+    "print(first_name.lower())\n",
+    "print(first_name.title())\n",
+    "print(first_name.upper())\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercise 2:\n",
+    "\n",
+    "Find a quote that you like. Store the quote in a variable, with an appropriate introduction such as \"Ken Thompson once said, 'One of my most productive days was throwing away 1000 lines of code'\". Print the quote 1000 times."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'Herman Melville said 'It is better to fail in originality than to succeed in imitation.'\n"
+     ]
+    }
+   ],
+   "source": [
+    "quote = \"Herman Melville said 'It is better to fail in originality than to succeed in imitation.'\"\n",
+    "print(quote * 1000)\n",
+    "    "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercise 3:\n",
+    "\n",
+    "Use python string operations and methods to use the following variables to print this:\n",
+    "\n",
+    "    \"hello world\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "hello world\n"
+     ]
+    }
+   ],
+   "source": [
+    "message_1 = \"hELlo\"\n",
+    "message_2 = \"                              wor\"\n",
+    "message_3 = \"wbdaloqteldndyrcggzf\"\n",
+    "print(message_1.lower() + \" \" + message_2.lstrip() + message_3[9:11])\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercise 4\n",
+    "\n",
+    "Fix the following code so it prints properly"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "The price is $3.44.\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Dollar amounts should only have two digits after the decimal\n",
+    "print(\"The price is $%.2f.\" % (3.44444))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "KeyboardInterrupt",
+     "evalue": "Interrupted by user",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mKeyboardInterrupt\u001b[0m                         Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-32-1362809a2d5b>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[1;32m      1\u001b[0m \u001b[0;31m# Complete the code so it prints your name and what you're learning\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 2\u001b[0;31m \u001b[0mname\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0minput\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"enter your name: \"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      3\u001b[0m \u001b[0mlanguage\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0minput\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"enter the language you are learning: \"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      4\u001b[0m \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"{} is learning {}\"\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mformat\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mname\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0mlanguage\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;32m/usr/local/Cellar/jupyterlab/2.2.8/libexec/lib/python3.8/site-packages/ipykernel/kernelbase.py\u001b[0m in \u001b[0;36mraw_input\u001b[0;34m(self, prompt)\u001b[0m\n\u001b[1;32m    858\u001b[0m                 \u001b[0;34m\"raw_input was called, but this frontend does not support input requests.\"\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    859\u001b[0m             )\n\u001b[0;32m--> 860\u001b[0;31m         return self._input_request(str(prompt),\n\u001b[0m\u001b[1;32m    861\u001b[0m             \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m_parent_ident\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    862\u001b[0m             \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m_parent_header\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;32m/usr/local/Cellar/jupyterlab/2.2.8/libexec/lib/python3.8/site-packages/ipykernel/kernelbase.py\u001b[0m in \u001b[0;36m_input_request\u001b[0;34m(self, prompt, ident, parent, password)\u001b[0m\n\u001b[1;32m    902\u001b[0m             \u001b[0;32mexcept\u001b[0m \u001b[0mKeyboardInterrupt\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    903\u001b[0m                 \u001b[0;31m# re-raise KeyboardInterrupt, to truncate traceback\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 904\u001b[0;31m                 \u001b[0;32mraise\u001b[0m \u001b[0mKeyboardInterrupt\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"Interrupted by user\"\u001b[0m\u001b[0;34m)\u001b[0m \u001b[0;32mfrom\u001b[0m \u001b[0;32mNone\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    905\u001b[0m             \u001b[0;32mexcept\u001b[0m \u001b[0mException\u001b[0m \u001b[0;32mas\u001b[0m \u001b[0me\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    906\u001b[0m                 \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mlog\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mwarning\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"Invalid Message:\"\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mexc_info\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0;32mTrue\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;31mKeyboardInterrupt\u001b[0m: Interrupted by user"
+     ]
+    }
+   ],
+   "source": [
+    "# Complete the code so it prints your name and what you're learning\n",
+    "name = input(\"enter your name: \")\n",
+    "language = input(\"enter the language you are learning: \")\n",
+    "print(\"{} is learning {}\".format(name,language))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercise 5\n",
+    "\n",
+    "Create your own mad-lib with at least 5 inputs.\n",
+    "\n",
+    "\"Title of our product is {title} and we plan to launch it during {date}. The product is designed for the {type of industry} and specifically for {user type} users. This is a {dollar value} per year industry and these users are critical because they {user type reason}. The target users need the product because they are trying to {user goal} and currently have problems {user pain}.\" \n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 33,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Enter a titlesimple app\n",
+      "Enter a datedecember 25\n",
+      "Enter an industrysanitation\n",
+      "Enter a type of usergraphic user\n",
+      "Enter a dollar value$1.25\n",
+      "Enter a reason for selecting user typeuser\n",
+      "Enter an user goalfinishing course\n",
+      "Enter a problem users may havevomiting\n",
+      "Title of our product is simple app and we plan to launch it during december 25. The product is designed for the sanitation and specifically for graphic user users. This is a $1.25 per year industry and these users are critical because they user. The target users need the product because they are trying to finishing course and currently have problems vomiting.\n"
+     ]
+    }
+   ],
+   "source": [
+    "title = input(\"Enter a title \")\n",
+    "date = input(\"Enter a date \")\n",
+    "type_of_industry = input(\"Enter an industry \")\n",
+    "user_type = input(\"Enter a type of user \")\n",
+    "dollar_value = input(\"Enter a dollar value \")\n",
+    "user_type_reason = input(\"Enter a reason for selecting user type \")\n",
+    "user_goal = input(\"Enter an user goal \")\n",
+    "user_pain = input(\"Enter a problem users may have \")\n",
+    "\n",
+    "mad_lib = f\"Title of our product is {title} and we plan to launch it during {date}. The product is designed for the {type_of_industry} and specifically for {user_type} users. This is a {dollar_value} per year industry and these users are critical because they {user_type_reason}. The target users need the product because they are trying to {user_goal} and currently have problems {user_pain}.\" \n",
+    "\n",
+    "print(mad_lib)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.5"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
